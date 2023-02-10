@@ -45,6 +45,8 @@ import org.wso2.carbon.user.core.claim.inmemory.ClaimConfig;
 import org.wso2.carbon.utils.multitenancy.MultitenantConstants;
 
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -482,6 +484,22 @@ public class ClaimMetadataManagementServiceImpl implements ClaimMetadataManageme
                         .MASKING_REGULAR_EXPRESSION_PROPERTY));
             }
         }
+        return null;
+    }
+
+    @Override
+    public Set<ExternalClaim> getMappingsFromOtherDialectToCarbon(String otherDialectURI, Set<String> otherClaimURIs,
+                                                                  String tenantDomain) throws ClaimMetadataException {
+
+        return null;
+    }
+
+    @Override
+    public Map<String, String> getMappingsMapFromOtherDialectToCarbon(String otherDialectURI,
+                                                                      Set<String> otherClaimURIs, String tenantDomain,
+                                                                      boolean useCarbonDialectAsKey)
+            throws ClaimMetadataException {
+
         return null;
     }
 

@@ -21,8 +21,8 @@ import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceRegistration;
 import org.osgi.service.component.ComponentContext;
 import org.wso2.carbon.identity.claim.metadata.mgt.ClaimMetadataManagementService;
-import org.wso2.carbon.identity.claim.metadata.mgt.ClaimMetadataManagementServiceImpl;
 import org.wso2.carbon.identity.claim.metadata.mgt.ClaimMetadataStoreFactory;
+import org.wso2.carbon.identity.claim.metadata.mgt.DpClaimMetadataManagementServiceImpl;
 import org.wso2.carbon.identity.claim.metadata.mgt.dao.ClaimConfigInitDAO;
 import org.wso2.carbon.identity.claim.metadata.mgt.internal.impl.DefaultClaimConfigInitDAO;
 import org.wso2.carbon.identity.claim.metadata.mgt.listener.ClaimConfigListener;
@@ -69,7 +69,7 @@ public class IdentityClaimManagementServiceComponent {
             ClaimMetadataStoreFactory claimMetadataStoreFactory = new ClaimMetadataStoreFactory();
             bundleCtx.registerService(ClaimManagerFactory.class.getName(), claimMetadataStoreFactory, null);
 
-            ClaimMetadataManagementService claimManagementService = new ClaimMetadataManagementServiceImpl();
+            ClaimMetadataManagementService claimManagementService = new DpClaimMetadataManagementServiceImpl();
             bundleCtx.registerService(ClaimMetadataManagementService.class.getName(), claimManagementService, null);
             IdentityClaimManagementServiceDataHolder.getInstance().setClaimManagementService(claimManagementService);
 

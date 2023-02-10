@@ -25,11 +25,11 @@ import org.wso2.carbon.identity.application.authentication.framework.config.mode
 import org.wso2.carbon.identity.application.authentication.framework.config.model.SequenceConfig;
 import org.wso2.carbon.identity.application.authentication.framework.context.AuthenticationContext;
 import org.wso2.carbon.identity.application.authentication.framework.exception.FrameworkException;
+import org.wso2.carbon.identity.application.authentication.framework.internal.FrameworkServiceDataHolder;
 import org.wso2.carbon.identity.application.authentication.framework.model.AuthenticatedUser;
 import org.wso2.carbon.identity.application.authentication.framework.util.FrameworkConstants;
 import org.wso2.carbon.identity.application.authentication.framework.util.FrameworkUtils;
 import org.wso2.carbon.identity.application.common.model.ClaimConfig;
-import org.wso2.carbon.identity.claim.metadata.mgt.ClaimMetadataHandler;
 import org.wso2.carbon.identity.claim.metadata.mgt.exception.ClaimMetadataException;
 import org.wso2.carbon.identity.core.util.IdentityUtil;
 import org.wso2.carbon.user.core.UserCoreConstants;
@@ -262,7 +262,8 @@ public class DefaultSequenceHandlerUtils {
             throws FrameworkException {
 
         try {
-            Map<String, String> claimMapping = ClaimMetadataHandler.getInstance()
+            Map<String, String> claimMapping = FrameworkServiceDataHolder.getInstance()
+                    .getClaimMetadataManagementService()
                     .getMappingsMapFromOtherDialectToCarbon(standardDialect, null, tenantDomain, true);
             if (claimMapping.containsKey(claimURI)) {
                 return claimMapping.get(claimURI);
@@ -361,4 +362,5 @@ public class DefaultSequenceHandlerUtils {
         }
         return spRoleUri;
     }
+
 }

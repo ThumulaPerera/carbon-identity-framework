@@ -20,7 +20,7 @@
     <parent>
         <groupId>org.wso2.carbon.identity.framework</groupId>
         <artifactId>claim-mgt</artifactId>
-        <version>5.25.102-SNAPSHOT</version>
+        <version>5.25.200-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
@@ -105,6 +105,24 @@
             <groupId>org.wso2.carbon.identity.framework</groupId>
             <artifactId>org.wso2.carbon.identity.central.log.mgt</artifactId>
         </dependency>
+<!--        &lt;!&ndash; https://mvnrepository.com/artifact/org.apache.httpcomponents.client5/httpclient5 &ndash;&gt;-->
+<!--        <dependency>-->
+<!--            <groupId>org.apache.httpcomponents.client5</groupId>-->
+<!--            <artifactId>httpclient5</artifactId>-->
+<!--            <version>5.2.1</version>-->
+<!--        </dependency>-->
+        <!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/httpcore-osgi -->
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpcore-osgi</artifactId>
+            <version>4.4.15</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient-osgi -->
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient-osgi</artifactId>
+            <version>4.5.13</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -145,7 +163,14 @@
                             org.wso2.carbon.identity.central.log.mgt.utils; version="${carbon.identity.package.import.version.range}",
                             org.wso2.carbon.identity.core.util; version="${carbon.identity.package.import.version.range}",
                             org.wso2.carbon.identity.core.cache; version="${carbon.identity.package.import.version.range}",
-                            org.wso2.carbon; version="${carbon.kernel.package.import.version.range}"
+                            org.wso2.carbon; version="${carbon.kernel.package.import.version.range}",
+                            org.apache.http,
+                            org.apache.http.auth,
+                            org.apache.http.client,
+                            org.apache.http.client.methods,
+                            org.apache.http.util,
+                            org.apache.http.impl.client,
+                            com.hazelcast.com.fasterxml.jackson.databind
                         </Import-Package>
                         <Export-Package>
                             !org.wso2.carbon.identity.claim.metadata.mgt.internal,

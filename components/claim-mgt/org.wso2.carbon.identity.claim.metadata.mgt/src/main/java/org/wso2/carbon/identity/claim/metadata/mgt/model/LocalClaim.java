@@ -16,6 +16,7 @@
 
 package org.wso2.carbon.identity.claim.metadata.mgt.model;
 
+import com.hazelcast.com.fasterxml.jackson.annotation.JsonProperty;
 import org.wso2.carbon.identity.claim.metadata.mgt.util.ClaimConstants;
 
 import java.util.ArrayList;
@@ -27,9 +28,10 @@ import java.util.Map;
  * Represents the metadata of a local claim.
  */
 public class LocalClaim extends Claim {
+
     private List<AttributeMapping> mappedAttributes;
 
-    public LocalClaim(String claimURI) {
+    public LocalClaim(@JsonProperty("claimURI") String claimURI) {
         super(ClaimConstants.LOCAL_CLAIM_DIALECT_URI, claimURI);
         mappedAttributes = new ArrayList<>();
     }

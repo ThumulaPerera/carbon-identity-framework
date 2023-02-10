@@ -27,6 +27,8 @@ import org.wso2.carbon.identity.claim.metadata.mgt.model.LocalClaim;
 import org.wso2.carbon.identity.core.util.IdentityTenantUtil;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import static org.wso2.carbon.identity.claim.metadata.mgt.util.ClaimConstants.ErrorMessage.ERROR_CODE_EMPTY_LOCAL_CLAIM_URI;
 import static org.wso2.carbon.identity.claim.metadata.mgt.util.ClaimConstants.ErrorMessage.ERROR_CODE_EMPTY_MAPPED_ATTRIBUTES_IN_LOCAL_CLAIM;
@@ -207,4 +209,11 @@ public interface ClaimMetadataManagementService {
 
         return null;
     }
+
+    Set<ExternalClaim> getMappingsFromOtherDialectToCarbon(
+            String otherDialectURI, Set<String> otherClaimURIs, String tenantDomain)
+            throws ClaimMetadataException;
+
+    Map<String, String> getMappingsMapFromOtherDialectToCarbon(String otherDialectURI, Set<String>
+            otherClaimURIs, String tenantDomain, boolean useCarbonDialectAsKey) throws ClaimMetadataException;
 }

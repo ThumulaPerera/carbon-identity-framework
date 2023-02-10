@@ -45,7 +45,7 @@ import org.wso2.carbon.identity.application.common.model.ServiceProvider;
 import org.wso2.carbon.identity.application.mgt.ApplicationConstants;
 import org.wso2.carbon.identity.central.log.mgt.utils.LogConstants;
 import org.wso2.carbon.identity.central.log.mgt.utils.LoggerUtils;
-import org.wso2.carbon.identity.claim.metadata.mgt.ClaimMetadataHandler;
+import org.wso2.carbon.identity.claim.metadata.mgt.ClaimMetadataManagementService;
 import org.wso2.carbon.identity.claim.metadata.mgt.exception.ClaimMetadataException;
 import org.wso2.carbon.identity.core.util.IdentityCoreConstants;
 import org.wso2.carbon.user.api.ClaimManager;
@@ -875,9 +875,9 @@ public class DefaultClaimHandler implements ClaimHandler {
 
         Map<String, String> claimMapping = null;
         try {
-            claimMapping = ClaimMetadataHandler.getInstance()
+            claimMapping = getClaimMetadataManagementService()
                     .getMappingsMapFromOtherDialectToCarbon(otherDialect, keySet, tenantDomain,
-                                                            useLocalDialectAsKey);
+                    useLocalDialectAsKey);
         } catch (ClaimMetadataException e) {
             throw new FrameworkException("Error while loading mappings.", e);
         }
@@ -1037,5 +1037,10 @@ public class DefaultClaimHandler implements ClaimHandler {
 
         return !sequenceConfig.getApplicationConfig().getServiceProvider().getLocalAndOutBoundAuthenticationConfig().
                 isUseUserstoreDomainInRoles();
+    }
+
+    private ClaimMetadataManagementService getClaimMetadataManagementService() {
+
+        return FrameworkServiceDataHolder.getInstance().getClaimMetadataManagementService();
     }
 }
